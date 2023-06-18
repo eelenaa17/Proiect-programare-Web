@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Proiect AWBD</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
+  <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/webjars/font-awesome/6.2.0/css/all.min.css"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/books}">Carti</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/utilizatori}">Utilizatori</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/rezervari}">Rezervari</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/lecturi}">Sali lectura</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container mt-5">
+  <h1 style="text-align: center;">Proiect AWBD - Ursu Elena Izabela</h1>
+</div>
+</body>
+</html>

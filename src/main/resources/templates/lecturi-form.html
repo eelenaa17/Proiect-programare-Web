@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Adauga o inregistrare noua</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
+  <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/webjars/font-awesome/6.2.0/css/all.min.css"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Adauga o inregistrare noua</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/lecturi}">Lista lecturi</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/" th:text="Home"></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container mt-5">
+  <h1>Adauga o inregistrare noua</h1>
+  <form th:object="${lectura}" th:action="@{/lecturi}" method="post">
+    <div class="form-group">
+      <label for="sala">Sala:</label>
+      <input type="text" class="form-control" id="sala" th:field="*{denumire}" required>
+    </div>
+    <div class="form-group">
+      <label for="book">Carte:</label>
+      <select class="form-control" id="book" th:field="*{book.id}" required>
+        <option value="">Selecteaza o carte:</option>
+        <th:block th:each="book : ${books}">
+          <option th:value="${book.id}" th:text="${book.bookName} + ' ' + ${book.autor.nume} +' '+${book.autor.prenume} "></option>
+        </th:block>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="user">Utilizator:</label>
+      <select class="form-control" id="user" th:field="*{utilizator.id}" required>
+        <option value="">Selecteaza un utilizator:</option>
+        <th:block th:each="utilizator : ${utilizatori}">
+          <option th:value="${utilizator.id}" th:text="${utilizator.firstName} + ' ' + ${utilizator.lastName}+ ' CNP: ' +${utilizator.cnp}"></option>
+        </th:block>
+      </select>
+    </div>
+    <div class="form-group">
+        <label for="NumarOre">Ore:</label>
+        <input type="number" class="form-control" id="NumarOre" th:field="*{perioada}" required min="1">
+    </div>
+    <div class="form-group">
+      <label for="data_sala">Data:</label>
+      <input type="date" class="form-control" id="data_sala" th:field="*{datasala}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Salveaza</button>
+  </form>
+</div>
+<script>
+  const dataSala = document.getElementById("data_sala");
+  dataSala.min = new Date().toISOString().split("T")[0];
+  dataSala.addEventListener("change", validateDataSala);
+</script>
+
+</body>
+</html>
